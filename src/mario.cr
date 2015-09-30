@@ -331,7 +331,11 @@ if  ARGV.empty?
   g = Game.new (m.simple_map)
   g.run
 else
-  m = Map.new (ARGV[0])
-  g = Game.new (m.load_map)
-  g.run
+  begin 
+    m = Map.new (ARGV[0])
+    g = Game.new (m.load_map)
+    g.run
+  rescue e
+    puts e.message
+  end
 end
